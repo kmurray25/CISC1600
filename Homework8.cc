@@ -26,7 +26,7 @@ int getAverage(int studentIQ[], int arraySize)
     
     int avg = sum / arraySize;
     return avg;
-}
+} 
 
 int main()
 {
