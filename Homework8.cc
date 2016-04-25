@@ -2,44 +2,50 @@
 #include <string>
 using namespace std;
 
-void outputOne(string studentNames[], int studentIQ[], int index)
+void outputOne(string studentNames[], int studentScores[], int index)
 {
-    cout << " Student #" << index << ": Name-" << studentNames[index] << " IQ-" << studentIQ[index] << endl;
+    cout << " Student #" << index << ": Name-" << studentNames[index] << " Score-" << studentScores[index] << endl;
 }
 
-void outputAll(string studentNames[], int studentIQ[], int arraySize)
+void outputScore(string studentNames[], int studentScores[], int index)
+{
+    cout << "The score for " << studentNames[index] << " is " << studentScores[index] << "." << endl;
+}
+
+void outputAll(string studentNames[], int studentScores[], int arraySize)
 {
     for(int i=0; i<arraySize; i++)
     {
-        outputOne(studentNames, studentIQ, i);
+        outputOne(studentNames, studentScores, i);
     }
 }
 
-int getAverage(int studentIQ[], int arraySize)
+int getAverage(int studentScores[], int arraySize)
 {
     int sum = 0;
     for(int i=0; i<arraySize; i++)  
     {
         // i iterates from 0 to arraysize-1, which is exactly the range of index
-        sum = sum + studentIQ[i];
+        sum = sum + studentScores[i];
     }
     
     int avg = sum / arraySize;
     return avg;
-} 
+}
 
 int main()
 {
-    string names[7] = {"Apple","Ben","Cathie","Denny","Elly","Fred","Greg"};
-    int IQ[7] = {100,94,120,111,103,102,101};
+    string names[5] = {"Apple","Ben","Cathie","Denny","Elly"};
+    int scores[5] = {60,70,80,90,100};
     int operation, index;   // to store user input
     bool running = true;
     
     do{
         cout << "==Menu==" << endl;
-        cout << "1 - Output single student's name and IQ" << endl;
-        cout << "2 - Output all students' name and IQ" << endl;
-        cout << "3 - Output average IQ" << endl;
+        cout << "1 - Output single student's name and score" << endl;
+        cout << "2 - Output one student's score" << endl;
+        cout << "3 - Output all students' name and score" << endl;
+        cout << "4 - Output average score" << endl;
         cout << "Anything else - exit program" << endl;
         cout << "Please input menu item: ";
         cin >> operation;
@@ -48,9 +54,9 @@ int main()
             case 1:
                 cout << "Please input student #: ";
                 cin >> index;
-                if(index >= 0 && index < 7)
+                if(index >= 0 && index < 5)
                 {
-                    outputOne(names, IQ, index);
+                    outputOne(names, scores, index);
                 }
                 else
                 {
@@ -58,10 +64,22 @@ int main()
                 }
                 break;
             case 2:
-                outputAll(names, IQ, 7);
+                cout << "Enter student #: ";
+                cin >> index;
+                if(index >= 0 && index < 5)
+                {
+                    outputScore(names, scores, index);
+                }
+                else
+                {
+                    cout << "Invalid index!" << endl;
+                }
                 break;
             case 3:
-                cout << "Average score = " << getAverage(IQ, 7) << endl;
+                outputAll(names, scores, 5);
+                break;
+            case 4:
+                cout << "Average score = " << getAverage(scores, 5) << endl;
                 break;
             default:
                 running = false;
