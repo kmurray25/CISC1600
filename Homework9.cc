@@ -12,6 +12,21 @@ void outputScore(string studentNames[], int studentScores[], int index)
     cout << "The score for " << studentNames[index] << " is " << studentScores[index] << "." << endl;
 }
 
+void printName(string studentNames[], int index)
+
+{
+    cout << " Student #" << index << ": Name-" << studentNames[index] << endl;
+}
+
+void listNames(string studentNames[], int index, int arraySize)
+{
+    for(int i=0; i<arraySize; i++)
+    {
+        printName(studentNames, i);
+    }
+}
+
+
 void outputAll(string studentNames[], int studentScores[], int arraySize)
 {
     for(int i=0; i<arraySize; i++)
@@ -72,7 +87,8 @@ int main()
                 }
                 else
                 {
-                    cout << "Invalid index!" << endl;
+                    cout << "Not valid. These are the possible options: " << endl;
+                    listNames(names, index, 5);
                 }
                 break;
             case 3:
